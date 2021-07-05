@@ -1,0 +1,48 @@
+version: "2.4" #"3.7"
+
+services:
+  bot:
+    build: tgbot
+    working_dir: /code
+    restart: always
+    tty: true
+    mem_limit: 150m
+    depends_on:
+      - postgres
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: geheimdienstbot
+
+  postgres:
+    image: postgres:12-alpine
+    restart: on-failure
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    mem_limit: 150m
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: geheimdienstbot
+
+  #pgadmin:
+  #  image: dpage/pgadmin4
+  #  restart: always
+  #  volumes:
+  #    - pgadmin-data:/var/lib/pgadmin
+  #  environment:
+  #    PGADMIN_DEFAULT_EMAIL: pgadmin@test.com
+  #    PGADMIN_DEFAULT_PASSWORD: pgadmin
+  #    PGADMIN_LISTEN_PORT: 5555
+  #  ports:
+  #    - "5555:5555"
+  #  links:
+  #    - "postgres:pg"
+  #  logging:
+  #    driver: none 
+
+volumes:
+  postgres-data:
+  #pgadmin-data:

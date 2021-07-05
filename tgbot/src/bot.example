@@ -1,0 +1,10 @@
+[tg_bot]
+token = 
+admin_id = 
+use_redis = false
+
+[db]
+user = postgres
+password = postgres
+database = 
+host = postgres

@@ -1,0 +1,8 @@
+__pycache__
+cache
+.venv
+.vscode
+docker-compose.yml
+bot.ini
+token.txt
+whistlebot.txt
