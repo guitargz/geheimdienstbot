@@ -29,7 +29,7 @@ def _log(obj) -> None:
 
 async def subscription_loop(dp: Dispatcher, pool) -> None:
     items = await subscription_items(pool)
-    _log(items)
+    #_log(items)
     for item in items:
         await dp.bot.send_message(int(item[0]), item[1])
 
